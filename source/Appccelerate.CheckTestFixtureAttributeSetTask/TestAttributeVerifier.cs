@@ -23,21 +23,22 @@ namespace Appccelerate.CheckTestFixtureAttributeSetTask
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using Appccelerate.IO;
 
     public class TestAttributeVerifier
     {
         public TestAttributeVerificationResult Verify(string sourceFolderPath, IEnumerable<string> sourceFileNames)
         {
-            var violationMessages = new List<string>();
+            var violations = new List<Violation>();
 
-            foreach (var sourceFileName in sourceFileNames)
+            foreach (string sourceFileName in sourceFileNames)
             {
                 if (!sourceFileName.EndsWith("Test.cs", StringComparison.InvariantCultureIgnoreCase))
                 {
                     continue;
                 }
 
-                string sourceFilePath = Path.Combine(sourceFolderPath, sourceFileName);
+                AbsoluteFilePath sourceFilePath = Path.Combine(sourceFolderPath, sourceFileName);
                 if (!File.Exists(sourceFilePath))
                 {
                     continue;
@@ -51,11 +52,11 @@ namespace Appccelerate.CheckTestFixtureAttributeSetTask
                 }
 
                 string violationMessage = string.Concat("File `", sourceFileName, "` is missing [TestFixture] attribute.");
-                violationMessages.Add(violationMessage);
+                violations.Add(new Violation(violationMessage, sourceFilePath));
             }
 
-            return violationMessages.Any()
-                ? TestAttributeVerificationResult.CreateFaulty(violationMessages)
+            return violations.Any()
+                ? TestAttributeVerificationResult.CreateFaulty(violations)
                 : TestAttributeVerificationResult.CreateSuccessful();
         }
     }

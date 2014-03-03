@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TestAttributeVerificationResult.cs" company="Appccelerate">
+// <copyright file="Violation.cs" company="Appccelerate">
 //   Copyright (c) 2008-2014
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,28 +18,19 @@
 
 namespace Appccelerate.CheckTestFixtureAttributeSetTask
 {
-    using System.Collections.Generic;
+    using Appccelerate.IO;
 
-    public class TestAttributeVerificationResult
+    public struct Violation
     {
-        private TestAttributeVerificationResult(bool successful, IReadOnlyList<Violation> violations)
+        public Violation(string message, AbsoluteFilePath filename)
+            : this()
         {
-            this.Successful = successful;
-            this.Violations = violations;
+            this.Message = message;
+            this.Filename = filename;
         }
 
-        public IReadOnlyList<Violation> Violations { get; private set; }
+        public string Message { get; private set; }
 
-        public bool Successful { get; private set; }
-
-        public static TestAttributeVerificationResult CreateSuccessful()
-        {
-            return new TestAttributeVerificationResult(true, new List<Violation>());
-        }
-
-        public static TestAttributeVerificationResult CreateFaulty(IReadOnlyList<Violation> violations)
-        {
-            return new TestAttributeVerificationResult(false, violations);
-        }
+        public AbsoluteFilePath Filename { get; private set; }
     }
 }

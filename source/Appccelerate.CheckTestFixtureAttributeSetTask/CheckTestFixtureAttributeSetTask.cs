@@ -20,19 +20,19 @@ namespace Appccelerate.CheckTestFixtureAttributeSetTask
 {
     using System.Collections.Generic;
     using System.Linq;
-
+    using Appccelerate.CheckTestFixtureAttributeSetTask.Properties.JetBrains.Annotations;
     using Microsoft.Build.Framework;
     using Microsoft.Build.Utilities;
-
+    
     public class CheckTestFixtureAttributeSetTask : Task
     {
-        [Required]
+        [Required, UsedImplicitly]
         public string SourceFolderPath { get; set; }
 
-        [Required]
+        [Required, UsedImplicitly]
         public ITaskItem[] SourceFiles { get; set; }
 
-        [Required]
+        [Required, UsedImplicitly]
         public bool TreatWarningsAsErrors { get; set; }
 
         public override bool Execute()
@@ -52,9 +52,9 @@ namespace Appccelerate.CheckTestFixtureAttributeSetTask
                 return true;
             }
 
-            foreach (string violationMessage in result.ViolationMessages)
+            foreach (var violation in result.Violations)
             {
-                this.LogViolation(violationMessage);
+                this.LogViolation(violation);
             }
 
             bool continueExecution = !this.TreatWarningsAsErrors;
@@ -62,15 +62,17 @@ namespace Appccelerate.CheckTestFixtureAttributeSetTask
             return continueExecution;
         }
 
-        private void LogViolation(string violationMessage)
+        private void LogViolation(Violation violation)
         {
+            const string Subcategory = "TestFixture attribute";
+            
             if (this.TreatWarningsAsErrors)
             {
-                this.Log.LogError(violationMessage);
+                this.Log.LogError(Subcategory, null, null, violation.Filename, 1, 1, 1, 1, violation.Message);
             }
             else
             {
-                this.Log.LogWarning(violationMessage);
+                this.Log.LogWarning(Subcategory, null, null, violation.Filename, 1, 1, 1, 1, violation.Message);
             }
         }
     }
