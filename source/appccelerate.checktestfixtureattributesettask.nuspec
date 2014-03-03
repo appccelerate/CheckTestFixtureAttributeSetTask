@@ -1,0 +1,26 @@
+﻿<?xml version="1.0"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Appccelerate.CheckTestFixtureAttributeSetTask</id>
+    <version>0.0.0</version>
+    <title>Appccelerate.CheckTestFixtureAttributeSetTask</title>
+    <authors>Appccelerate team</authors>
+    <owners>Appccelerate team</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>https://github.com/appccelerate/CheckTestFixtureAttributeSetTask</projectUrl>
+    <iconUrl>https://github.com/appccelerate/appccelerate/raw/master/docs/nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>MSBuild task checking whether TestFixture attribute is set on test classes (classes with suffix Test).</summary>
+    <description>MSBuild task checking whether TestFixture attribute is set on test classes (classes with suffix Test).</description>
+    <copyright>Copyright 2012-2014</copyright>
+    <tags>Appccelerate, MSBuild</tags>
+    <dependencies/>	
+  </metadata>
+  <files>
+    <file src="Appccelerate.CheckTestFixtureAttributeSetTask\bin\Release\Appccelerate.CheckTestFixtureAttributeSetTask.dll" target="" />
+    <file src="Appccelerate.CheckTestFixtureAttributeSetTask\bin\Release\Appccelerate.CheckTestFixtureAttributeSetTask.pdb" target="" />
+    <file src="Appccelerate.CheckTestFixtureAttributeSetTask\bin\Release\Appccelerate.IO.dll" target="" />
+    <file src="Appccelerate.CheckTestFixtureAttributeSetTask\bin\Release\Appccelerate.Fundamentals.dll" target="" />
+    <file src="Appccelerate.CheckTestFixtureAttributeSetTask.targets" target="build" />
+  </files>  
+</package>
