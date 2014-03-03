@@ -19,6 +19,8 @@
   <files>
     <file src="Appccelerate.CheckTestFixtureAttributeSetTask\bin\Release\Appccelerate.CheckTestFixtureAttributeSetTask.dll" target="" />
     <file src="Appccelerate.CheckTestFixtureAttributeSetTask\bin\Release\Appccelerate.CheckTestFixtureAttributeSetTask.pdb" target="" />
+    <file src="Appccelerate.CheckTestFixtureAttributeSetTask\bin\Release\Appccelerate.IO.dll" target="" />
+    <file src="Appccelerate.CheckTestFixtureAttributeSetTask\bin\Release\Appccelerate.Fundamentals.dll" target="" />
     <file src="Appccelerate.CheckTestFixtureAttributeSetTask.targets" target="build" />
   </files>  
 </package>
