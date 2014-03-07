@@ -2,6 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)..\</SolutionDir>
+    <TreatWarningsAsErrors Condition="$(TreatWarningsAsErrors) == ''">false</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <UsingTask
