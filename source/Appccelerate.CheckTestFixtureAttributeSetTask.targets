@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <BuildDependsOn>$(BuildDependsOn);CheckTestFixtureAttributeSet<BuildDependsOn>
-    <RebuildDependsOn>$(RebuildDependsOn);CheckTestFixtureAttributeSet<RebuildDependsOn>
+    <BuildDependsOn>$(BuildDependsOn);CheckTestFixtureAttributeSet</BuildDependsOn>
+    <RebuildDependsOn>$(RebuildDependsOn);CheckTestFixtureAttributeSet</RebuildDependsOn>
   </PropertyGroup>
   
   <UsingTask
