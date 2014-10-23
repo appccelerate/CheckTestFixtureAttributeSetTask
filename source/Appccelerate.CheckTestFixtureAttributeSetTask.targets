@@ -5,11 +5,16 @@
     <TreatWarningsAsErrors Condition="$(TreatWarningsAsErrors) == ''">false</TreatWarningsAsErrors>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <BuildDependsOn>$(BuildDependsOn);CheckTestFixtureAttributeSet<BuildDependsOn>
+    <RebuildDependsOn>$(RebuildDependsOn);CheckTestFixtureAttributeSet<RebuildDependsOn>
+  </PropertyGroup>
+  
   <UsingTask
     TaskName="CheckTestFixtureAttributeSetTask"
     AssemblyFile="$(MSBuildThisFileDirectory)..\Appccelerate.CheckTestFixtureAttributeSetTask.dll" />
 
-  <Target Name="AfterBuild">
+  <Target Name="CheckTestFixtureAttributeSet">
     <CheckTestFixtureAttributeSetTask
         TreatWarningsAsErrors="$(TreatWarningsAsErrors)"
         SourceFolderPath="$(ProjectDir)"
